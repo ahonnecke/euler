@@ -29,7 +29,7 @@ while (numone > lower):
     while (numtwo > lower):
         num = numone * numtwo
         if(ispalindrome(num)):
-            print  str(numone) +  " * " + str(numtwo) + " = "+ str(num) + " is a palidrome"
+            print(str(numone) +  " * " + str(numtwo) + " = "+ str(num) + " is a palidrome")
             if(num > maximum):
                 maximum = num
 
@@ -37,4 +37,4 @@ while (numone > lower):
     numone = numone - 1;
     numtwo = upper
 
-print str(maximum) + " is the largest palidromic number"
+print(str(maximum) + " is the largest palidromic number")

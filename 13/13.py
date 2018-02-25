@@ -112,14 +112,14 @@ tosum[99] = 53503534226472524250874054075591789781264330331690
 summation = 1
 
 for item in tosum:
-    print str(item)
+    print(str(item))
     summation += item
 
-print str(summation)
+print(str(summation))
 
 strsum = str(summation)
 
-print strsum[0:10]
+print(strsum[0:10])
 
 end = time.time()
 sys.exit("Elapsed: "+str(end - start))

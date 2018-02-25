@@ -23,40 +23,33 @@ start = time.time()
 i = 0
 divisors = 0
 trinum = 0
+#bight =
 
 while divisors < 500:
     i += 1
     trinum += i
+    bight = int(math.sqrt(trinum))
 
     divisors = 1 #itself
 
-    if trinum % 2 == 0:
-        #half of itself (for speed)
-        divisors +=1
-    
-    if trinum % 3 == 0:
-        # one third of itself (for speed)
-        divisors +=1
-    
-    if trinum % 4 == 0:
-        #one fourth of itself (for speed)
-        divisors +=1
-    
-    for j in range(1, int(trinum/5)+1):
+    #print(str(trinum) + " is divisible by:")
+
+    for j in range(1, int(trinum/bight) + 1):
         if trinum % j == 0:
+            #print(" * " + str(j))
             divisors +=1
 
-    # for j in range(1, int(math.sqrt(trinum))):
-    #     if trinum % j == 0:
-    #         divisors += 2
+    for k in range(2, bight):
+        if trinum % k == 0:
+            #print(" * 1/" + str(k) + " (" + str(trinum / k) + ")")
+            divisors +=1
+
+    #print " * " + str(trinum)
             
-    print str(trinum) + " has " + str(divisors) + " divisors"
+    #print str(trinum) + " has " + str(divisors) + " divisors"
         
-#print "The first triangle number with to have over " + str(divisors) + " divisors is " + str(triangle)
+print("The first triangle number with to have over 500 divisors at " + str(divisors) + " divisors is " + str(trinum))
 
 end = time.time()
-sys.exit("Elapsed: "+str(end - start))
+sys.exit("Elapsed: "+str(end - start)+" with a bight of the square root of the triple number")
 
-# 76564125 has 96 divisors
-# 76576500 has 576 divisors
-# Elapsed: 7014.60624409

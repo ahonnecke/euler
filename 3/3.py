@@ -9,7 +9,6 @@ num = int(math.sqrt(upper))
 
 def isprime( number ):
     "is number a prime number"
-    #print str(number)
     if(number < 3):
         return False;
 
@@ -20,9 +19,8 @@ def isprime( number ):
 
 while (num > 1):
     if(upper % num == 0):
-        #print str(num) + " is a factor"
         if (isprime(num)):
-            print str(num) + " is the largest prime factor of " + str(upper)
+            print(str(num) + " is the largest prime factor of " + str(upper))
             num = 1
             break
     num = num - 1;

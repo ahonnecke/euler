@@ -28,4 +28,4 @@ while(primesfound <= numprime):
     i += 1
     if (isprime(i)):
         primesfound += 1
-        print str(i) + " is the " + str(primesfound-1) + "th prime"
+        print(str(i) + " is the " + str(primesfound-1) + "th prime")

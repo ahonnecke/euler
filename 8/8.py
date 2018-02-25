@@ -37,5 +37,5 @@ for i in range(0, len(bignum) - numproducts):
     for j in range(i, i+numproducts):
         aproduct *= int(bignum[j])
     if(aproduct > maxproduct):
-        print str(aproduct)+" is larger than "+ str(maxproduct)
+        print(str(aproduct)+" is larger than "+ str(maxproduct))
         maxproduct = aproduct

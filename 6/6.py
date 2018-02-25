@@ -26,16 +26,16 @@ num = 0
 for x in range(lower, upper+1):
     sumofsquares = sumofsquares + ( x**2 )
 
-print str(sumofsquares) + " is the sum of squared integers between " + str(lower) + " and " + str(upper)
+print(str(sumofsquares) + " is the sum of squared integers between " + str(lower) + " and " + str(upper))
 
 for x in range(lower, upper+1):
     sums = sums + x
 
 squareofsums = sums**2
 
-print str(squareofsums) + " is the square of summed integers between " + str(lower) + " and " + str(upper)
+print(str(squareofsums) + " is the square of summed integers between " + str(lower) + " and " + str(upper))
 
 difference = squareofsums - sumofsquares
 
-print str(difference) + " is the difference between the sum of squares and the square of sums for integers between " + str(lower) + " and " + str(upper)
+print(str(difference) + " is the difference between the sum of squares and the square of sums for integers between " + str(lower) + " and " + str(upper))
 

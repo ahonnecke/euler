@@ -24,18 +24,18 @@ maxterms = 0
 for i in range(1, limit):
     steps = 1
     start = i
-    #print "Doing " + str(i)
+    #print ("Doing " + str(i))
     while(start != 1):
         steps += 1
         if start % 2 == 0:
             start = start / 2
         else:
             start = start * 3 + 1
-        #print "  Step " + str(start)
+        #print("  Step " + str(start))
 
     if steps > maxterms:
         maxterms = steps
-        print "A seed of '" + str(i) + "' generates " + str(steps) + " terms"
+        print("A seed of '" + str(i) + "' generates " + str(steps) + " terms")
 
 end = time.time()
 sys.exit("Elapsed: " + str(end - starttime))

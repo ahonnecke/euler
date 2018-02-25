@@ -28,7 +28,7 @@ for i in range(0, maxtocheck):
     if isprime(i):
         runningsum += i
         
-print "The sum of primes below " + str(maxtocheck) + " is " + str(runningsum)
+print("The sum of primes below " + str(maxtocheck) + " is " + str(runningsum))
 
 end = time.time()
 sys.exit("Elapsed: "+str(end - start))

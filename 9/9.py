@@ -35,12 +35,12 @@ for c in range(0, total):
         for a in range(0, total):
             if istriplet(a, b, c):
                 if(a + b + c == total):
-                    print "****** "+str(a) + " " + str(b) + " " + str(c)
-                    print str(a * b * c)
+                    print("****** "+str(a) + " " + str(b) + " " + str(c))
+                    print(str(a * b * c))
                     end = time.time()
                     sys.exit("Elapsed: "+str(end - start))
                 else:
-                    print str(a) + " " + str(b) + " " + str(c)
+                    print(str(a) + " " + str(b) + " " + str(c))
 
 
 #255 340 425

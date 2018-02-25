@@ -26,4 +26,4 @@ while(False == done):
     else:
         continue
 
-print str(num) + " is the lowest number that is evenly divisible by all numbers between " + str(lower) + " and " + str(upper)
+print(str(num) + " is the lowest number that is evenly divisible by all numbers between " + str(lower) + " and " + str(upper))

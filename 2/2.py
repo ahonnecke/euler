@@ -17,7 +17,7 @@ while (num < upper):
         total += num
 #        print num
 
-print total;
+print(total);
 
 #✔ 11:24 ~/Code/euler [master|✚ 2…4] $ python 2.py
 #4613732
