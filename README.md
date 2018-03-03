@@ -1,2 +1,1 @@
-# euler
-Solve the euler project
+# Repository for programing problem solutions
