@@ -21,31 +21,57 @@ class patChar:
 class Solution:
     depth = 0
     def isEq(self, a, b):
-        plainA = a.replace("*", "")
-        plainB = b.replace("*", "")
-        return plainB == "." or plainA == "." or plainA == plainB
+        """
+        :type a: string
+        :type b: string
+        :rtype: bool
+        """        
+        return b[0] == "." or a[0] == "." or a[0] == b[0]
     
     def isMultiple(self, a):
-        return a[1] == "*"
+        """
+        :type a: list
+        :rtype: bool
+        """        
+        return a[1] == "*" or a[1] == "+"
+    
+    def isRequired(self, a):
+        """
+        :type a: list
+        :rtype: bool
+        """
+        if len(a) == 1:
+            return true
+        return a[1] == "+"
     
     def isWild(self, a):
+        """
+        :type a: list
+        :rtype: bool
+        """        
         return a[0] == "."
     
     def print(self, s):
+        """
+        :type s: string
+        :rtype: bool
+        """        
         out = " "
         for i in range(self.depth):
             out += "*"
-        #print(out+" "+str(s))
+        print(out+" "+str(s))
     
     def arrayifyExpression(self, regex):
         out = []
         for i in range(len(regex)):
             result = regex[i]
-            if result == "*":
+            if result == "*" or result == "+":
                 continue
             if i < len(regex) - 1:
                 if regex[i+1] == "*":
                     result += "*"
+                if regex[i+1] == "+":
+                    result += "+"
             out.append(result)
 
         return out
@@ -74,8 +100,12 @@ class Solution:
             return True
         
         multiple = False
-        if p:
-            multiple = (len(p[0]) == 2)
+        if p and len(p[0]) > 1:
+            multiple = self.isMultiple(p[0])
+
+        required = False
+        if p and len(p[0]) > 1:
+            required = self.isRequired(p[0])
 
         match = False
         if p and s:
@@ -86,12 +116,12 @@ class Solution:
             self.print("not s or not p")
             return False
 
-        if multiple and not s and len(p) == 1:
+        if multiple and not required and not s and len(p) == 1:
             self.depth -= 1
             self.print(" and not s")
             return True
 
-        if multiple and self.smartMatch(s, p[1:]):
+        if multiple and not required and self.smartMatch(s, p[1:]):
             self.print("multiple try s, p[1:]")
             self.depth -= 1
             return True
@@ -224,6 +254,8 @@ assert s.isMatch("aasdfasdfasdfasdfas", "aasdf.*asdf.*asdf.*asdf.*s") == True
 assert s.isMatch("bb", ".bab") == False
 assert s.isMatch("abcd", "d*") == False
 assert s.isMatch("a", "ab*") == True
+assert s.isMatch("aaaa", "a+") == True
+assert s.isMatch("a", "ab+") == False
 assert s.isMatch("ab", ".*..c*") == True
 assert s.isMatch("a", ".*..a*") == False
 assert s.isMatch("aaaaaaaaaaaaab", "a*a*a*a*a*a*a*a*a*a*c") == False
