@@ -6,17 +6,6 @@
 # The function prototype should be:
 # bool isMatch(const char *s, const char *p)
 
-class patChar:
-    isWild = False
-    isMultiple = False
-    
-    def isEq(char):
-        return self.value == "." or char == "." or char == self.value
-
-    def isEq(char):
-        return self.value == "." or char == "." or char == self.value
-        
-
 
 class Solution:
     depth = 0
@@ -59,7 +48,7 @@ class Solution:
         out = " "
         for i in range(self.depth):
             out += "*"
-        print(out+" "+str(s))
+        #print(out+" "+str(s))
     
     def arrayifyExpression(self, regex):
         out = []
@@ -94,10 +83,8 @@ class Solution:
 
         self.print(str(s)+" ("+str(p)+")")
 
-        if s == p:
-            self.depth -= 1
-            self.print("s == p")
-            return True
+        if not p:
+            return not s
         
         multiple = False
         if p and len(p[0]) > 1:
@@ -108,37 +95,22 @@ class Solution:
             required = self.isRequired(p[0])
 
         match = False
-        if p and s:
+        if s:
             match = self.isEq(s[0], p[0])
 
-        if s and not p or (not multiple and not s):
-            self.depth -= 1
-            self.print("not s or not p")
-            return False
-
-        if multiple and not required and not s and len(p) == 1:
-            self.depth -= 1
-            self.print(" and not s")
-            return True
-
-        if multiple and not required and self.smartMatch(s, p[1:]):
-            self.print("multiple try s, p[1:]")
-            self.depth -= 1
-            return True
-        
-        if match and self.smartMatch(s[1:], p[1:]):
-            self.print("match not mul, trying  s[1:] and p[1:]")
-            return True        
-
-        if multiple and match and len(s) > 1:
-            if self.smartMatch(s[1:], p):
+        if multiple:
+            if not required and self.smartMatch(s, p[1:]):
+                self.print("multiple try s, p[1:]")
+                self.depth -= 1
+                return True
+            elif match and self.smartMatch(s[1:], p):
                 self.print("smartMatch(s[1:], p)")
                 self.depth -= 1
                 return True
+            elif not required:
+                return False
         
-        self.depth -= 1
-        self.print("Fallthrough")        
-        return False
+        return match and self.smartMatch(s[1:], p[1:])
 
     def isMatch(self, s, p):
         """
